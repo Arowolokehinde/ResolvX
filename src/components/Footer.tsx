@@ -15,7 +15,7 @@ const LINKS = [
     items: [
       { label: "Docs", href: "#" },
       { label: "SDK Reference", href: "#" },
-      { label: "GitHub", href: "#" },
+      { label: "GitHub", href: "https://github.com/Arowolokehinde/ResolvX" },
       { label: "Contract", href: "#" },
     ],
   },

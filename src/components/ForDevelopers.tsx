@@ -83,7 +83,9 @@ export default function ForDevelopers() {
                 Read the docs
               </a>
               <a
-                href="#"
+                href="https://github.com/Arowolokehinde/ResolvX"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-primary-container font-bold inline-flex items-center gap-1 hover:gap-2 transition-all duration-200 hover:opacity-80"
               >
                 View on GitHub

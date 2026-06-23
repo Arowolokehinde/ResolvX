@@ -651,7 +651,9 @@ try {
               </div>
               <div className="flex gap-sm flex-shrink-0">
                 <a
-                  href="#"
+                  href="https://github.com/Arowolokehinde/ResolvX"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white px-md py-2.5 font-bold rounded-xl text-sm hover:brightness-110 transition-all active:scale-95"
                   style={{ background: "linear-gradient(90deg, #151c27, #0052ff)" }}
                 >

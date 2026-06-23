@@ -81,7 +81,9 @@ export default function Navbar() {
               </a>
               <a
                 className="text-secondary hover:text-primary-container transition-colors font-label-sm text-label-sm"
-                href="#"
+                href="https://github.com/Arowolokehinde/ResolvX"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 GitHub
               </a>
