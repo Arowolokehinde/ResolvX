@@ -132,7 +132,7 @@ export default function Navbar() {
           onClick={() => setModalOpen(false)}
         >
           <div
-            className="relative w-full max-w-md bg-surface dark:bg-[#111827] border border-outline-variant rounded-3xl shadow-2xl overflow-hidden"
+            className="relative w-full max-w-sm bg-surface dark:bg-[#111827] border border-outline-variant rounded-3xl shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top gradient bar */}
@@ -149,7 +149,7 @@ export default function Navbar() {
               <span className="material-symbols-outlined" style={{ fontSize: "20px" }}>close</span>
             </button>
 
-            <div className="px-xl pt-xl pb-lg flex flex-col gap-lg">
+            <div className="px-lg pt-lg pb-md flex flex-col gap-md">
 
               {/* Header */}
               <div className="text-center">
@@ -165,58 +165,58 @@ export default function Navbar() {
               </div>
 
               {/* Two option cards */}
-              <div className="grid grid-cols-2 gap-sm">
+              <div className="grid grid-cols-2 gap-xs">
 
                 {/* Connect Wallet option */}
                 <div
-                  className="relative flex flex-col items-center gap-sm bg-surface-container-low border border-outline-variant/40 rounded-2xl px-md py-md text-center opacity-60 cursor-not-allowed"
+                  className="relative flex flex-col items-center gap-xs bg-surface-container-low border border-outline-variant/40 rounded-xl px-sm py-sm text-center opacity-60 cursor-not-allowed"
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    className="w-7 h-7 rounded-lg flex items-center justify-center"
                     style={{ background: "linear-gradient(135deg, #151c2712, #0052ff18)" }}
                   >
                     <span
                       className="material-symbols-outlined"
-                      style={{ fontSize: "20px", fontVariationSettings: "'FILL' 1", color: "#0052ff" }}
+                      style={{ fontSize: "15px", fontVariationSettings: "'FILL' 1", color: "#0052ff" }}
                     >
                       account_balance_wallet
                     </span>
                   </div>
-                  <div className="text-xs font-bold text-on-surface leading-tight">Connect Existing Wallet</div>
+                  <div className="text-[11px] font-bold text-on-surface leading-tight">Connect Wallet</div>
                   <span
-                    className="text-[9px] font-bold uppercase tracking-widest px-xs py-0.5 rounded-full"
+                    className="text-[8px] font-bold uppercase tracking-widest px-xs py-0.5 rounded-full"
                     style={{ color: "#0052ff", background: "#0052ff15", border: "1px solid #0052ff25" }}
                   >
                     Coming soon
                   </span>
-                  <p className="text-[10px] text-secondary leading-relaxed">
-                    Leather, Xverse, or Asigna
+                  <p className="text-[9px] text-secondary leading-tight">
+                    Leather, Xverse, Asigna
                   </p>
                 </div>
 
                 {/* Create Seedless option */}
                 <div
-                  className="relative flex flex-col items-center gap-sm bg-surface-container-low border border-outline-variant/40 rounded-2xl px-md py-md text-center opacity-60 cursor-not-allowed"
+                  className="relative flex flex-col items-center gap-xs bg-surface-container-low border border-outline-variant/40 rounded-xl px-sm py-sm text-center opacity-60 cursor-not-allowed"
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    className="w-7 h-7 rounded-lg flex items-center justify-center"
                     style={{ background: "linear-gradient(135deg, #151c2712, #0052ff18)" }}
                   >
                     <span
                       className="material-symbols-outlined"
-                      style={{ fontSize: "20px", fontVariationSettings: "'FILL' 1", color: "#0052ff" }}
+                      style={{ fontSize: "15px", fontVariationSettings: "'FILL' 1", color: "#0052ff" }}
                     >
                       fingerprint
                     </span>
                   </div>
-                  <div className="text-xs font-bold text-on-surface leading-tight">Create Seedless Wallet</div>
+                  <div className="text-[11px] font-bold text-on-surface leading-tight">Create Seedless</div>
                   <span
-                    className="text-[9px] font-bold uppercase tracking-widest px-xs py-0.5 rounded-full"
+                    className="text-[8px] font-bold uppercase tracking-widest px-xs py-0.5 rounded-full"
                     style={{ color: "#0052ff", background: "#0052ff15", border: "1px solid #0052ff25" }}
                   >
                     Coming soon
                   </span>
-                  <p className="text-[10px] text-secondary leading-relaxed">
+                  <p className="text-[9px] text-secondary leading-tight">
                     Face ID or fingerprint
                   </p>
                 </div>
@@ -224,16 +224,10 @@ export default function Navbar() {
               </div>
 
               {/* Divider */}
-              {/* <div className="flex items-center gap-sm">
+              <div className="flex items-center gap-sm">
                 <div className="flex-1 h-px bg-outline-variant/40" />
-                <span className="text-[10px] text-secondary font-medium uppercase tracking-widest">Seedless Wallet</span>
+                <span className="text-[10px] text-secondary font-medium uppercase tracking-widest">Seedless details</span>
                 <div className="flex-1 h-px bg-outline-variant/40" />
-              </div> */}
-
-              {/* Icon + Coming Soon badge */}
-              <div className="flex flex-col items-center gap-md text-center">
-
-
               </div>
 
               {/* Feature list */}
