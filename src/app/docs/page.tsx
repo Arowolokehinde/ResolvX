@@ -132,7 +132,7 @@ export default function DocsPage() {
             >
               v0.1.0-beta
             </span>
-            <span className="text-xs text-secondary">Last updated Jun 2025</span>
+            <span className="text-xs text-secondary">Last updated Jun 2026</span>
           </div>
           <h1
             className="font-extrabold tracking-[-0.02em] mb-xs"

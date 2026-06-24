@@ -104,7 +104,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-white/30 text-xs">
-            © 2025 ResolvX. Built on Stacks · Secured by Bitcoin.
+            © 2026 ResolvX. Built on Stacks · Secured by Bitcoin.
           </p>
 
           {/* Status + badges */}

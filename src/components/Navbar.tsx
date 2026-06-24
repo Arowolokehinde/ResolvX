@@ -151,46 +151,89 @@ export default function Navbar() {
 
             <div className="px-xl pt-xl pb-lg flex flex-col gap-lg">
 
-              {/* Icon + Coming Soon badge */}
-              <div className="flex flex-col items-center gap-md text-center">
-                <div
-                  className="w-20 h-20 rounded-2xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #151c2712, #0052ff18)" }}
+              {/* Header */}
+              <div className="text-center">
+                <h2
+                  className="font-extrabold text-on-surface tracking-tight"
+                  style={{ fontSize: "20px", fontFamily: "Inter, sans-serif" }}
                 >
-                  <span
-                    className="material-symbols-outlined"
-                    style={{
-                      fontSize: "44px",
-                      fontVariationSettings: "'FILL' 1",
-                      color: "#0052ff",
-                    }}
-                  >
-                    fingerprint
-                  </span>
-                </div>
+                  Get started with ResolvX
+                </h2>
+                <p className="text-secondary text-sm mt-xs">
+                  Choose how you want to access your wallet.
+                </p>
+              </div>
 
-                <div>
+              {/* Two option cards */}
+              <div className="grid grid-cols-2 gap-sm">
+
+                {/* Connect Wallet option */}
+                <div
+                  className="relative flex flex-col items-center gap-sm bg-surface-container-low border border-outline-variant/40 rounded-2xl px-md py-md text-center opacity-60 cursor-not-allowed"
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #151c2712, #0052ff18)" }}
+                  >
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "20px", fontVariationSettings: "'FILL' 1", color: "#0052ff" }}
+                    >
+                      account_balance_wallet
+                    </span>
+                  </div>
+                  <div className="text-xs font-bold text-on-surface leading-tight">Connect Existing Wallet</div>
                   <span
-                    className="inline-block text-[10px] font-bold uppercase tracking-widest px-sm py-1 rounded-full mb-sm"
-                    style={{
-                      color: "#0052ff",
-                      background: "#0052ff15",
-                      border: "1px solid #0052ff25",
-                    }}
+                    className="text-[9px] font-bold uppercase tracking-widest px-xs py-0.5 rounded-full"
+                    style={{ color: "#0052ff", background: "#0052ff15", border: "1px solid #0052ff25" }}
                   >
                     Coming soon
                   </span>
-                  <h2
-                    className="font-extrabold text-on-surface tracking-tight"
-                    style={{ fontSize: "22px", fontFamily: "Inter, sans-serif" }}
-                  >
-                    ResolvX Seedless Wallet
-                  </h2>
-                  <p className="text-secondary text-sm mt-xs leading-relaxed">
-                    A self-sovereign wallet secured by your biometric — no seed phrase,
-                    no passwords, nothing to lose.
+                  <p className="text-[10px] text-secondary leading-relaxed">
+                    Leather, Xverse, or Asigna
                   </p>
                 </div>
+
+                {/* Create Seedless option */}
+                <div
+                  className="relative flex flex-col items-center gap-sm bg-surface-container-low border border-outline-variant/40 rounded-2xl px-md py-md text-center opacity-60 cursor-not-allowed"
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #151c2712, #0052ff18)" }}
+                  >
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: "20px", fontVariationSettings: "'FILL' 1", color: "#0052ff" }}
+                    >
+                      fingerprint
+                    </span>
+                  </div>
+                  <div className="text-xs font-bold text-on-surface leading-tight">Create Seedless Wallet</div>
+                  <span
+                    className="text-[9px] font-bold uppercase tracking-widest px-xs py-0.5 rounded-full"
+                    style={{ color: "#0052ff", background: "#0052ff15", border: "1px solid #0052ff25" }}
+                  >
+                    Coming soon
+                  </span>
+                  <p className="text-[10px] text-secondary leading-relaxed">
+                    Face ID or fingerprint
+                  </p>
+                </div>
+
+              </div>
+
+              {/* Divider */}
+              {/* <div className="flex items-center gap-sm">
+                <div className="flex-1 h-px bg-outline-variant/40" />
+                <span className="text-[10px] text-secondary font-medium uppercase tracking-widest">Seedless Wallet</span>
+                <div className="flex-1 h-px bg-outline-variant/40" />
+              </div> */}
+
+              {/* Icon + Coming Soon badge */}
+              <div className="flex flex-col items-center gap-md text-center">
+
+
               </div>
 
               {/* Feature list */}
@@ -210,11 +253,6 @@ export default function Navbar() {
                     icon: "swap_horiz",
                     label: "Send any token, they receive any token",
                     sub: "Cross-asset routing settled in one transaction",
-                  },
-                  {
-                    icon: "verified_user",
-                    label: "On-chain verified by Clarity",
-                    sub: "secp256r1 signature — the contract enforces it",
                   },
                 ].map(({ icon, label, sub }) => (
                   <li
