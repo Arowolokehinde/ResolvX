@@ -1,0 +1,20 @@
+[project]
+name = 'Resolvx-v0'
+description = ''
+authors = []
+telemetry = true
+cache_dir = './.cache'
+requirements = []
+
+[contracts.ResolvX-v0]
+path = 'contracts/ResolvX-v0.clar'
+clarity_version = 5
+epoch = 'latest'
+
+[contracts.ResolvX-router-v0]
+path = 'contracts/ResolvX-router-v0.clar'
+clarity_version = 5
+epoch = 'latest'
+
+[repl.analysis]
+passes = []

@@ -1,0 +1,45 @@
+[project]
+name = 'Resolvx-v0'
+description = ''
+authors = []
+telemetry = true
+cache_dir = './.cache'
+requirements = []
+
+# Both contracts target Clarity 5 (Stacks Nakamoto post-epoch-3.x).
+#
+# Clarity 4+ (SIP-033): `as-contract` removed; replaced by `as-contract?` with
+# explicit asset allowances. Both contracts use `as-contract?` and `current-contract`.
+# Both pass `clarinet check` individually with zero errors.
+
+[contracts.ResolvX-v0]
+path = 'contracts/ResolvX-v0.clar'
+clarity_version = 5
+epoch = 'latest'
+
+[contracts.ResolvX-router-v0]
+path = 'contracts/ResolvX-router-v0.clar'
+clarity_version = 5
+epoch = 'latest'
+
+# Test-only: mintable SIP-010 token; must be deployed after both main contracts
+# so that impl-trait can resolve the trait references.
+[contracts.mock-token]
+path = 'contracts/mock-token.clar'
+clarity_version = 2
+epoch = 'latest'
+
+[repl.analysis]
+passes = ['check_checker']
+
+[repl.analysis.lints]
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
+[repl.remote_data]
+enabled = false
+api_url = 'https://api.hiro.so'
