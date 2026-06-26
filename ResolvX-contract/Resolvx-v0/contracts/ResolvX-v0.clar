@@ -31,8 +31,8 @@
 ;;
 ;; Signature format
 ;; ----------------
-;; secp256r1-verify in Clarity 3 (SIP-031) takes a 32-byte SHA-256 hash
-;; directly -- no internal re-hashing. Pass the raw SHA-256 digest.
+;; secp256r1-verify in Clarity 5 takes a 32-byte SHA-256 hash directly --
+;; no internal re-hashing. Pass the raw SHA-256 digest.
 ;; WebAuthn returns DER-encoded signatures; the frontend MUST decode to raw
 ;; r||s (64 bytes) before submission.
 ;; =============================================================================
@@ -60,14 +60,27 @@
 ;; u2xx  authentication
 ;; u3xx  transfer validation
 ;; ---------------------------------------------------------------------------
-(define-constant ERR-WALLET-EXISTS     (err u100))
-(define-constant ERR-WALLET-NOT-FOUND  (err u101))
-(define-constant ERR-WALLET-REVOKED    (err u102))
-(define-constant ERR-INVALID-SIGNATURE (err u200))
-(define-constant ERR-INVALID-NONCE     (err u201))
-(define-constant ERR-INVALID-PUBKEY    (err u202))
-(define-constant ERR-ZERO-AMOUNT       (err u300))
-(define-constant ERR-SELF-TRANSFER     (err u301))
+(define-constant ERR-WALLET-EXISTS        (err u100))
+(define-constant ERR-WALLET-NOT-FOUND     (err u101))
+(define-constant ERR-WALLET-REVOKED       (err u102))
+(define-constant ERR-RECOVERY-PENDING     (err u103))
+(define-constant ERR-NO-RECOVERY-REQUEST  (err u104))
+(define-constant ERR-RECOVERY-TOO-EARLY   (err u105))
+(define-constant ERR-INVALID-SIGNATURE    (err u200))
+(define-constant ERR-INVALID-NONCE        (err u201))
+(define-constant ERR-INVALID-PUBKEY       (err u202))
+(define-constant ERR-ZERO-AMOUNT          (err u300))
+(define-constant ERR-SELF-TRANSFER        (err u301))
+
+;; ---------------------------------------------------------------------------
+;; CONSTANTS - recovery
+;;
+;; Blocks the owner has to cancel a pending recovery before it can be
+;; finalised. At ~10-minute Stacks block times this is approximately 24 hours.
+;; Front-ends must surface pending recovery requests so users can abort within
+;; this window. Increase to u1008 (~7 days) for production.
+;; ---------------------------------------------------------------------------
+(define-constant RECOVERY-DELAY-BLOCKS u144)
 
 ;; ---------------------------------------------------------------------------
 ;; DATA
@@ -81,6 +94,15 @@
     nonce:      uint,       ;; monotonically increasing -- prevents replay attacks
     active:     bool,       ;; false after owner-initiated revocation (permanent)
     created-at: uint        ;; block height at registration -- immutable audit record
+  }
+)
+
+;; Pending time-locked recovery initiated by the secp256k1 key only.
+;; Only one request may exist per principal at a time.
+(define-map recovery-requests principal
+  {
+    new-pubkey:   (buff 33), ;; replacement secp256r1 key to install after the delay
+    requested-at: uint       ;; block height of the initiate-recovery call
   }
 )
 
@@ -122,7 +144,7 @@
 ;; Verifies a secp256r1 signature over a 32-byte SHA-256 hash.
 ;; Returns (ok true) on success, ERR-INVALID-SIGNATURE on failure.
 ;;
-;; Clarity 3 secp256r1-verify takes the pre-hashed input directly (no
+;; Clarity 5 secp256r1-verify takes the pre-hashed input directly (no
 ;; internal re-hashing). sig must be 64-byte raw r||s, NOT DER-encoded.
 (define-private (verify-sig
   (payload-hash (buff 32))

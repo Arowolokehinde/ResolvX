@@ -1,8 +1,5 @@
 ;; Mock mintable SIP-010 token for tests only.
-;; Implements both the wallet's sip-010-trait and the router's ft-trait
-;; (they are structurally identical) so a single contract works for both.
 (impl-trait 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.ResolvX-v0.sip-010-trait)
-(impl-trait 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.ResolvX-router-v0.ft-trait)
 
 (define-fungible-token mock-token)
 

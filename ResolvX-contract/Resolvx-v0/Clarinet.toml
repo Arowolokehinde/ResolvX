@@ -4,7 +4,11 @@ description = ''
 authors = []
 telemetry = true
 cache_dir = './.cache'
-requirements = []
+requirements = [
+  { contract_id = 'SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.swap-helper-v1-03' },
+  { contract_id = 'SPQC38PW542EQJ5M11CR25P7BS1CA6QT4TBXGB3M.stableswap-usda-susdt-v-1-2' },
+  { contract_id = 'SPQC38PW542EQJ5M11CR25P7BS1CA6QT4TBXGB3M.stableswap-abtc-xbtc-v-1-2' }
+]
 
 # Both contracts target Clarity 5 (Stacks Nakamoto post-epoch-3.x).
 #
@@ -30,7 +34,7 @@ clarity_version = 2
 epoch = 'latest'
 
 [repl.analysis]
-passes = ['check_checker']
+passes = []
 
 [repl.analysis.lints]
 

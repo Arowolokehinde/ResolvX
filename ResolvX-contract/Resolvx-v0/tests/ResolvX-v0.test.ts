@@ -57,9 +57,9 @@ function compressRawPubKey(raw: Uint8Array): Uint8Array {
  * The contract does the same SHA-256 and passes the result to secp256r1-verify.
  */
 async function sign(cv: ReturnType<typeof Cl.tuple>): Promise<Uint8Array> {
-  // Buffer.from() re-wraps the Uint8Array in the current realm, which
-  // crypto.subtle.sign requires when running inside a vitest forks worker.
-  const bytes = Buffer.from(serializeCV(cv));
+  // In @stacks/transactions v7, serializeCV returns a hex string, not a Buffer.
+  // Pass 'hex' encoding so Buffer.from decodes binary bytes, not UTF-8 chars.
+  const bytes = Buffer.from(serializeCV(cv), 'hex');
   const sigBuf = await crypto.subtle.sign(
     { name: "ECDSA", hash: { name: "SHA-256" } },
     privateKey,
@@ -148,7 +148,8 @@ describe("read-only", () => {
     const { result } = simnet.callReadOnlyFn(WALLET, "get-wallet", [
       Cl.principal(wallet1),
     ], deployer);
-    expect(result).toBeSome();
+    // toBeSome() with no arg is broken in vitest-environment-clarinet v3 — check inner value directly
+    expect(result.value).toBeDefined();
   });
 
   it("get-nonce starts at 0", () => {
@@ -377,7 +378,7 @@ describe("revoke-wallet", () => {
         action: Cl.stringAscii("REVOKE"),
         nonce:  Cl.uint(0n),
         owner:  Cl.principal(wallet2),
-      }))),
+      })), 'hex'),
     );
     const { result } = simnet.callPublicFn(WALLET, "revoke-wallet", [
       Cl.uint(0n),
